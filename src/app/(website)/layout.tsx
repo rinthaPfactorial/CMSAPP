@@ -1,14 +1,23 @@
 import FooterServer from '@/blocks/global/Footer/Server'
 import HeaderServer from '@/blocks/global/Header/Server'
-import React,{ReactNode} from 'react'
+import AboutServer from '@/blocks/home/About/Server'
+import React, { ReactNode } from 'react'
+import { Transition, TextReveal } from '@/blocks/ui'
+import Link from 'next/link'
 
-export default function layout({children}:{children:ReactNode}) {
-    
+export default function layout({ children }: { children: ReactNode }) {
+
   return (
-    <div>
-        <HeaderServer/>
+
+    <main className="relative bg-white ">
+      <Transition className="fixed md:top-8 top-6 md:left-8 left-6 z-30 hover:text-white/80 text-white/40">
+        <Link href={"/"}>
+          <TextReveal className="font-semibold text-sm text-transparent">.</TextReveal>
+        </Link>
+      </Transition>
       {children}
-      <FooterServer/>
-    </div>
+      <FooterServer />
+
+    </main>
   )
 }

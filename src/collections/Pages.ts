@@ -1,3 +1,6 @@
+import { Cover } from '@/blocks/cover/schema'
+import { Image } from '@/blocks/Image/schema'
+import { RichText } from '@/blocks/richText/schema'
 import { CollectionConfig } from 'payload'
 
 export const Pages: CollectionConfig = {
@@ -11,20 +14,18 @@ export const Pages: CollectionConfig = {
     },
     {
       name: 'slug',
-      label: 'Slug', // Shows the routing where pages exist
+      label: 'Slug', 
       type: 'text',
       admin: {
         position: 'sidebar',
       },
-      required:true,
+      required: true,
     },
-    // {
-    //   name: 'layout',
-    //   label: 'Layout',
-    //   type: 'blocks',
-    //   blocks: [
-    //     // Define your blocks here
-    //   ],
-    // },
+    {
+      name: 'layout',
+      label: 'Layout',
+      type: 'blocks',
+      blocks: [Cover, RichText, Image],
+    },
   ],
 }

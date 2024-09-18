@@ -14,6 +14,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    services: Service;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -23,6 +24,7 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    about: About;
   };
   locale: null;
   user: User & {
@@ -92,6 +94,57 @@ export interface Page {
   id: string;
   name: string;
   slug: string;
+  layout?:
+    | (
+        | {
+            title: string;
+            subtitle: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cover';
+          }
+        | {
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richText';
+          }
+        | {
+            image: string | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  service_name: string;
+  service_desc: string;
+  service_icon?: (string | null) | Media;
+  hover_img?: (string | null) | Media;
+  order: number;
   updatedAt: string;
   createdAt: string;
 }
@@ -159,6 +212,36 @@ export interface Footer {
       }[]
     | null;
   copyrightNotice: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  fullname: string;
+  designation: string;
+  profileImage: string | Media;
+  email: string;
+  phone: number;
+  description_heading: string;
+  description: string;
+  total_clients: number;
+  total_experience: number;
+  experience: {
+    start_date?: string | null;
+    end_date?: string | null;
+    role?: string | null;
+    company?: string | null;
+    id?: string | null;
+  }[];
+  social_link: {
+    label?: string | null;
+    link?: string | null;
+    id?: string | null;
+  }[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
