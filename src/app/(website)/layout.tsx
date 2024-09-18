@@ -1,9 +1,10 @@
 import FooterServer from '@/blocks/global/Footer/Server'
 import HeaderServer from '@/blocks/global/Header/Server'
-import AboutServer from '@/blocks/home/About/Server'
 import React, { ReactNode } from 'react'
 import { Transition, TextReveal } from '@/blocks/ui'
 import Link from 'next/link'
+import '@/styles/globals.css'
+
 
 export default function layout({ children }: { children: ReactNode }) {
 

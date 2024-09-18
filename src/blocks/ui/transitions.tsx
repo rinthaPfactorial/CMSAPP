@@ -3,7 +3,13 @@ import { ReactNode } from "react";
 import { cn } from "@/utils/cn";
 import { HTMLMotionProps, motion } from "framer-motion";
 
-interface Props extends HTMLMotionProps<"span"> { }
+interface Props extends HTMLMotionProps<"span"> { 
+  className?: string;
+  initial?: object;
+  whileInView?: object;
+  transition?: object;
+  viewport?: object;
+}
 
 interface FadeInProps {
   children: ReactNode;

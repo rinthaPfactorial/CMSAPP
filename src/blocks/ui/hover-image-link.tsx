@@ -19,7 +19,6 @@ export const HoverImageLink = ({
   imgSrc,
   subheading,
   href,
-  price,
 }: LinkProps) => {
   const ref = useRef<HTMLAnchorElement | null>(null);
 

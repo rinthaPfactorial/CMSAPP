@@ -4,7 +4,9 @@ import { cn } from "@/utils/cn";
 import { motion, HTMLMotionProps } from "framer-motion";
 import { ReactNode, useState } from "react";
 
-interface SectionHeadingProps extends HTMLMotionProps<"h3"> {}
+interface SectionHeadingProps extends HTMLMotionProps<"h3"> {
+  className?: string;
+}
 
 export const SectionHeading = ({
   className,

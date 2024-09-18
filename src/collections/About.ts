@@ -65,6 +65,7 @@ export const About: globalConfig = {
         { name: 'end_date', label: 'End Date', type: 'text' },
         { name: 'role', label: 'Designation / Role', type: 'text' },
         { name: 'company', label: 'Company Name', type: 'text' },
+        { name: 'order', label: 'order', type: 'number' },
       ],
       minRows: 1,
       // maxRows: 5,

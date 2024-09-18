@@ -235,6 +235,7 @@ export interface About {
     end_date?: string | null;
     role?: string | null;
     company?: string | null;
+    order?: number | null;
     id?: string | null;
   }[];
   social_link: {
