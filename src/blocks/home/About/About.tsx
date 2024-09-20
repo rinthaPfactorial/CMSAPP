@@ -3,8 +3,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import whoiam from "../../../assets/whoiam.jpg"
 import { SlideIn, TextReveal, FadeIn } from '@/blocks/ui';
 import { Newspaper, CalendarDays } from 'lucide-react';
+import { About as AboutType } from '@/utils/interfaces';
 
-export default function AboutClient({ aboutData }: { aboutData: any }) {
+interface AboutProps {
+  aboutData: AboutType;
+}
+
+export default function AboutClient({ aboutData }: AboutProps) {
   const [yearsExperience, setYearsExperience] = useState(0);
   const [happyClients, setHappyClients] = useState(0);
   const aboutRef = useRef(null);
@@ -16,7 +21,6 @@ export default function AboutClient({ aboutData }: { aboutData: any }) {
   ];
 
   const experiences = aboutData.experience.sort((a, b) => a.order - b.order);
-  console.log(experiences)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -112,7 +116,7 @@ export default function AboutClient({ aboutData }: { aboutData: any }) {
                     Over <em className="font-normal">{aboutData?.total_experience} years</em> Leading Innovation in Tech!
                   </h2>
 
-                  <p className="text-paceBlue/60 mb-12 leading-relaxed lg:text-lg text-justify">
+                  <p className="text-paceBlue/60 mb-12 leading-relaxed lg:text-md text-justify">
                     {aboutData.description}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">

@@ -1,59 +1,55 @@
-export interface UserObject {
-  success: boolean;
-  user: User;
-}
-
-export interface User {
-  about: About;
-  _id: string;
-  username: string;
-  email: string;
-  role: string;
-  timeline: Timeline[];
-  skills: Skill[];
-  youtube: any[];
-  projects: Project[];
-  social_handles: SocialHandle[];
-  services: Service[];
-  testimonials: Testimonial[];
-  createdAt: string;
-  updatedAt: string;
-  refreshToken: string;
-}
+import { Media } from '../payload-types';
 
 export interface About {
-  name: string;
-  title: string;
-  subTitle: string;
-  description: string;
-  quote: string;
-  exp_year: string;
+  fullname: string;
+  designation: string;
+  email: string;
+  phone: number;
   address: string;
-  some_total: string;
-  phoneNumber: string;
-  avatar: Avatar;
-  alternateAvatars: any[];
-  experiences: Experience[];
+  description_heading: string;
+  description: string;
+  total_clients: number;
+  total_experience: number;
+  profileImage: Media;
+  experience: Experience[];
+  social_link: Social[];
 }
 
 interface Experience {
-  _id: string;
-  position: string;
-  date: string;
+  start_date: string;
+  end_date: string;
+  role: string;
   company: string;
+  order: number;
 }
-export interface Avatar {
-  public_id: string;
-  url: string;
-  _id?: string;
+
+interface Social {
+  label: string; 
+  link: string;  
 }
+
+export interface Media {
+  relationTo: string;
+  required: boolean;
+}
+
+export interface Service {
+  service_name: string;
+  service_desc: string;
+  service_icon?: Media; 
+  hover_img?: Media;    
+  order: number;
+}
+
+
+
 
 export interface Skill {
   enabled: boolean;
   name: string;
   sequence: number;
   percentage: number;
-  image: Avatar;
+  image: Media;
   _id: string;
 }
 
@@ -94,14 +90,6 @@ export interface SocialHandle {
   _id: string;
 }
 
-export interface Service {
-  name: string;
-  charge: string;
-  desc: string;
-  enabled: boolean;
-  _id: string;
-  image: Image;
-}
 
 export interface Testimonial {
   image: Image;

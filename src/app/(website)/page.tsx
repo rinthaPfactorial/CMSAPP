@@ -12,10 +12,6 @@ export default function page() {
     <section>
       <HeroServer />
       <ServicesCardServer />
-      <SectionHeading className="md:pl-16 overflow-hidden md:px-24 pt-20">
-        <SlideIn className="text-paceBlue">Want to know</SlideIn> <br />
-        <SlideIn className='' >About me</SlideIn>
-      </SectionHeading>
       <About />
       <ServicesServer/>
     </section>

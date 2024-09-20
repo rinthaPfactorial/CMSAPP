@@ -1,9 +1,15 @@
-import React from 'react'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import config from '@payload-config'
+import FooterClient from "./Footer"
 
-export default function FooterServer() {
+export  async function FooterServer() {
+    const payload = await getPayloadHMR({ config })
+    const footer = await payload.findGlobal({
+      slug: 'about',
+  
+    })
   return (
-    <div>
-      footer
-    </div>
-  )
-}
+<div>
+  <FooterClient footerData={footer}/>
+</div>  );
+};

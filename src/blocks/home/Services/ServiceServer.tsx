@@ -18,7 +18,6 @@ export default async function ServicesServer() {
 
     const sortedServices = services.sort((a, b) => a.order - b.order)
 
-    console.log(sortedServices)
 
     return (
         <section className="px-2 py-20 relative  bg-no-repeat bg-cover" id="services" style={{

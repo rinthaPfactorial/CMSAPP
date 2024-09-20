@@ -226,6 +226,7 @@ export interface About {
   profileImage: string | Media;
   email: string;
   phone: number;
+  address: string;
   description_heading: string;
   description: string;
   total_clients: number;
@@ -239,8 +240,8 @@ export interface About {
     id?: string | null;
   }[];
   social_link: {
-    label?: string | null;
-    link?: string | null;
+    label: 'Facebook' | 'Twitter' | 'Linkedin' | 'Instagram' | 'Youtube';
+    link: string;
     id?: string | null;
   }[];
   updatedAt?: string | null;
