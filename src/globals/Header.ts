@@ -2,12 +2,12 @@ import { GlobalConfig } from "payload"
 export const Header: GlobalConfig={
 slug:'header',
 fields:[
-    {
-        name:'logo',
-        label:'logo',
-        type:'upload',
-        relationTo:'media',required:true
-    },
+    // {
+    //     name:'logo',
+    //     label:'logo',
+    //     type:'upload',
+    //     relationTo:'media',required:true
+    // },
     {
         name:'nav',
         label:'Navigation',
@@ -23,7 +23,7 @@ fields:[
             }
         ],
         minRows:1,
-        maxRows:5,
+        maxRows:6,
         required:true,
     }
    

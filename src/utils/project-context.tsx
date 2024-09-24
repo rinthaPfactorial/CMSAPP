@@ -9,9 +9,10 @@ import React, {
   SetStateAction,
 } from "react";
 import { Project } from "./interfaces";
+import { Work } from "@/payload-types";
 
 interface ProjectContextProps {
-  projects: Project[];
+  projects: Work[];
   appliedFilter: string;
   filteredProjects: Project[];
   sort: boolean;
@@ -23,7 +24,7 @@ interface ProjectContextProps {
 }
 
 const ProjectsContext = createContext<ProjectContextProps>({
-  projects: [] as Project[],
+  projects: [] as Work[],
   appliedFilter: "all",
   filteredProjects: [] as Project[],
   sort: false,
@@ -40,13 +41,13 @@ const ProjectsProvider = ({
   data,
 }: {
   children: React.ReactNode;
-  data: Project[];
+  data: Work[]; // Update to Work[]
 }) => {
   const [projects, setProjects] = useState(data);
   const [appliedFilter, setAppliedFilter] = useState("all");
   const [filteredProjects, setFilteredProjects] = useState(data);
   const [sort, setSort] = useState(false);
-  const [singleProject, setSingleProject] = useState<Project | null>(null);
+  const [singleProject, setSingleProject] = useState<Work | null>(null); // Update to Work | null
 
   useEffect(() => {
     const filtered = applyFilters(projects, appliedFilter);
@@ -55,19 +56,19 @@ const ProjectsProvider = ({
 
   useEffect(() => {
     if (sort) {
-      const sorted = projects.toSorted((a, b) => a.sequence - b.sequence);
+      const sorted = [...projects].sort((a, b) => a.priority - b.priority); // Use 'priority' field
       setFilteredProjects(sorted);
       setProjects(sorted);
     }
   }, [sort]);
 
-  const applyFilters = (data: Project[], filterValues: string) => {
+  const applyFilters = (data: Work[], filterValues: string) => {
     if (filterValues === "all") {
       return data;
     }
 
     return data.filter((project) =>
-      project.techStack.some((tech) => filterValues === tech.trim())
+      project.technologies.some((tech) => filterValues === tech.trim())
     );
   };
 
@@ -89,6 +90,7 @@ const ProjectsProvider = ({
     </ProjectsContext.Provider>
   );
 };
+
 
 // Custom hook to consume the ProjectsContext
 const useProjects = () => {

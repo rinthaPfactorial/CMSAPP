@@ -15,6 +15,10 @@ export interface Config {
     media: Media;
     pages: Page;
     services: Service;
+    works: Work;
+    skills: Skill;
+    testimonials: Testimonial;
+    'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -150,6 +154,96 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "works".
+ */
+export interface Work {
+  id: string;
+  heading: string;
+  subHeading: string;
+  description: string;
+  image: string | Media;
+  technologies?:
+    | {
+        tech: string;
+        id?: string | null;
+      }[]
+    | null;
+  redirectLink: string;
+  priority: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: string;
+  skills: {
+    skill: string;
+    order: number;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  clientName: string;
+  companyName: string;
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: string;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'works';
+        value: string | Work;
+      } | null)
+    | ({
+        relationTo: 'skills';
+        value: string | Skill;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -188,7 +282,6 @@ export interface PayloadMigration {
  */
 export interface Header {
   id: string;
-  logo: string | Media;
   nav: {
     label?: string | null;
     link?: string | null;
@@ -240,8 +333,8 @@ export interface About {
     id?: string | null;
   }[];
   social_link: {
-    label: 'Facebook' | 'Twitter' | 'Linkedin' | 'Instagram' | 'Youtube';
-    link: string;
+    label?: string | null;
+    link?: string | null;
     id?: string | null;
   }[];
   updatedAt?: string | null;

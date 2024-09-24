@@ -13,6 +13,9 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { About } from './collections/About'
 import { Services } from './collections/Services'
+import Works from './collections/Works'
+import Skills from './collections/Skills'
+import Testimonials from './collections/Testimonial'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +28,7 @@ export default buildConfig({
     },
   },
   globals:[Header,Footer,About],
-  collections: [Users, Media,Pages,Services],
+  collections: [Users, Media,Pages,Services,Works,Skills,Testimonials],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

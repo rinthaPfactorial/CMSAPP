@@ -1,6 +1,6 @@
-import type { GlobalConfig } from 'payload'
+import type { globalConfig } from 'payload'
 
-export const About: GlobalConfig = {
+export const About: globalConfig = {
   slug: 'about',
   fields: [
     {
@@ -81,25 +81,8 @@ export const About: GlobalConfig = {
       label: 'Social Link',
       type: 'array',
       fields: [
-        {
-          name: 'label',
-          label: 'Label',
-          type: 'select', 
-          options: [
-            { label: 'Facebook', value: 'Facebook' },
-            { label: 'Twitter', value: 'Twitter' },
-            { label: 'LinkedIn', value: 'Linkedin' },
-            { label: 'Instagram', value: 'Instagram' },
-            { label: 'YouTube', value: 'Youtube' },
-          ],
-          required: true,
-        },
-        {
-          name: 'link',
-          label: 'Link',
-          type: 'text',
-          required: true,
-        },
+        { name: 'label', label: 'Label', type: 'text' },
+        { name: 'link', label: 'Link', type: 'text' },
       ],
       minRows: 1,
       maxRows: 5,
